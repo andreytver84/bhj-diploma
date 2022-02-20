@@ -8,7 +8,8 @@ const createRequest = (options = {}) => {
     try {
         if (options.method === 'GET') {
             let way = options.url + '?';
-            Object.entries(options.data).map(([key, value]) => way = way + key + '=' + value);
+            Object.entries(options.data).map(([key, value]) => way = way + key + '=' + value + '&');
+            way = way.slice(0, -1);
             xhr.open('GET', way);
             xhr.send();
         } else {

@@ -34,6 +34,7 @@ class Sidebar {
    * выходу устанавливает App.setState( 'init' )
    * */
   static initAuthLinks() {
-
+    App.getModal();
+    Modal.open();
   }
 }

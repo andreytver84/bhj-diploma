@@ -26,7 +26,7 @@ class Modal {
 
   /**   * Срабатывает после нажатия на элементы, закрывающие окно.   * Закрывает текущее окно (Modal.close())   * */
   onClose(e) {    
-    e.target.addEventListener('click', () => this.element.close());
+    e.target.addEventListener('click', () => this.close());
   }
   /**   * Открывает окно: устанавливает CSS-свойство display   * со значением «block»   * */
   open() {

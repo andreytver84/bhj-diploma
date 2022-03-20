@@ -19,21 +19,22 @@ class Modal {
   }
 
   /**   * При нажатии на элемент с data-dismiss="modal"    * должен закрыть текущее окно    * (с помощью метода Modal.onClose)   * */
-  registerEvents() {
-    const modals = this.element.querySelectorAll('[data-dismiss="modal"]');
-    modals.forEach(item => item.addEventListener('click', this.onClose()));
+  registerEvents() {    
+    const modals = this.element.querySelectorAll('[data-dismiss="modal"]');    
+    modals.forEach(item => item.addEventListener('click', this.onClose));
   }
 
   /**   * Срабатывает после нажатия на элементы, закрывающие окно.   * Закрывает текущее окно (Modal.close())   * */
-  onClose(e) {    
-    e.target.addEventListener('click', () => this.close());
+  onClose(e) {   
+    /*console.log(this.element);  */ 
+    e.target.closest('.modal').style.display = '';
   }
   /**   * Открывает окно: устанавливает CSS-свойство display   * со значением «block»   * */
-  open() {
+  open() {    
     this.element.style.display = 'block';
   }
   /**   * Закрывает окно: удаляет CSS-свойство display   * */
-  close() {
-    this.element.style.display = '';
+  close() {    
+    this.element.style.display = ''; /* Теряю контекст, восстановить не могу!!!! */
   }
 }

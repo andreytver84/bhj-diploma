@@ -15,7 +15,7 @@ class AsyncForm {
   constructor(element) {
     if (element) {
       this.element = element;
-      this.registerEvents()
+      this.registerEvents
     } else {
       throw new Error('не передан element');
     }
@@ -26,9 +26,10 @@ class AsyncForm {
    * вызывает метод submit()
    * */
   registerEvents() {
-    this.element.submit((e) => {
+    this.element.addEventListener('submit', (e)=> {
       e.preventDefault();
-    });
+      this.submit();
+    })
   }
 
   /**

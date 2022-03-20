@@ -36,7 +36,7 @@ class User {
    * авторизованном пользователе.
    * */
   static fetch(callback) {
-    createRequest({
+   createRequest({
       url: this.URL + '/current',
       method: 'GET',
       responseType: 'json',

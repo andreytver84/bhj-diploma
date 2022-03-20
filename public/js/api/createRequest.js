@@ -27,17 +27,17 @@ const createRequest = (options = {}) => {
 
 
 };
-
+/*
 createRequest({
     url: '/user/current',
     data: {
-        email: 'demo@demo',
+        email: 'demo@demo1',
         password: 'demo'
     },
     method: 'GET',
-    callback: (e, r) => {
-        connsole.log("r=", r)
+    callback: (e,r) => {
+        connsole.log("r=",r)
     }
-})
+})*/
 
 

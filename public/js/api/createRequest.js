@@ -6,13 +6,15 @@ const createRequest = (options = {}) => {
     const xhr = new XMLHttpRequest;
     xhr.responseType = 'json';
 
-    if (options.method === 'GET' && options.data) {
+    if (options.method === 'GET') {
         let way = options.url + '?';
-        Object.entries(options.data).map(([key, value]) => way = way + key + '=' + value + '&');
+        for (let key in options.data) {
+            way += `${key}=${options.data[key]}&`; 
+        }
         way = way.slice(0, -1);
         xhr.open('GET', way);
         xhr.send();
-    } else if (options.data) {
+    } else  {
         const formData = new FormData;
         Object.entries(options.data).map(([key, value]) => formData.append(key, value));
 
@@ -20,26 +22,36 @@ const createRequest = (options = {}) => {
         xhr.send(formData);
     }
     xhr.addEventListener('readystatechange', () => {
-        if (xhr.readystate && xhr.status === 200) {
-            options.callback(null, xhr.response);
+        if (xhr.readyState && xhr.status === 200) {
+            console.log(xhr.response);            
+            options.callback(null, xhr.response);           
         };
     });
 
 
 };
-
-/*createRequest({
-    url: '/user/current',
+/*
+createRequest({
+    url: '/user/login',
     data: {
         email: 'demo@demo',
-        password: 'demo1'
+        password: 'demo'
     },
-    method: 'GET',
+    method: 'POST',
     callback: (e,r) => {
         connsole.log("r=",r)
     }
-})*/
+})
+*/
 
-
+/*const xhr2 = new XMLHttpRequest;
+xhr2.responseType = 'json';
+xhr2.open('GET', '/user/current');
+xhr2.send();
+xhr2.addEventListener('readystatechange', () => {
+    if (xhr2.readyState === 4 && xhr2.status === 200) {
+        console.log(xhr2.response);              
+    };
+});*/
 
 

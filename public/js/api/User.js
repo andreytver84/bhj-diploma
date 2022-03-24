@@ -36,19 +36,11 @@ class User {
    * авторизованном пользователе.
    * */
   static fetch(callback) {
-   createRequest({
+    createRequest({
       url: this.URL + '/current',
       method: 'GET',
-      responseType: 'json',
-      /*data: this.current(),*/
-      callback: (err, response) => {
-        if (response && response.user) {
-          this.setCurrent(response.user);
-        } else {
-          this.unsetCurrent(response.user);
-        }
-        callback(err, response);
-      }
+      data: this.current(),
+      callback
     });
   }
 
@@ -62,14 +54,8 @@ class User {
     createRequest({
       url: this.URL + '/login',
       method: 'POST',
-      responseType: 'json',
       data,
-      callback: (err, response) => {
-        if (response && response.user) {
-          this.setCurrent(response.user);
-        }
-        callback(err, response);
-      }
+      callback
     });
   }
 
@@ -83,14 +69,8 @@ class User {
     createRequest({
       url: this.URL + '/register',
       method: 'POST',
-      responseType: 'json',
       data,
-      callback: (err, response) => {
-        if (response && response.user) {
-          this.setCurrent(response.user);
-        }
-        callback(err, response);
-      }
+      callback
     });
   }
 
@@ -102,14 +82,8 @@ class User {
     createRequest({
       url: this.URL + '/logout',
       method: 'POST',
-      responseType: 'json',
       data,
-      callback: (err, response) => {
-        if (response && response.success) {
-          this.unsetCurrent(response.user);
-        }
-        callback(err, response);
-      }
+      callback
     });
   }
 }

@@ -18,7 +18,7 @@ const createRequest = (options = {}) => {
         const formData = new FormData;
         Object.entries(options.data).map(([key, value]) => formData.append(key, value));
 
-        xhr.open('POST', options.url);
+        xhr.open(options.method, options.url);
         xhr.send(formData);
     }
     xhr.addEventListener('readystatechange', () => {
@@ -30,6 +30,7 @@ const createRequest = (options = {}) => {
 
 };
 
+/*
 createRequest({
     url: '/user/login',
     data: {
@@ -41,7 +42,7 @@ createRequest({
         console.log("r=",r)
     }
 })
-
+*/
 
 /*const xhr2 = new XMLHttpRequest;
 xhr2.responseType = 'json';

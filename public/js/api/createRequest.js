@@ -22,15 +22,14 @@ const createRequest = (options = {}) => {
         xhr.send(formData);
     }
     xhr.addEventListener('readystatechange', () => {
-        if (xhr.readyState && xhr.status === 200) {
-            console.log(xhr.response);            
+        if (xhr.readyState === 4 && xhr.status === 200) {                       
             options.callback(null, xhr.response);           
         };
     });
 
 
 };
-/*
+
 createRequest({
     url: '/user/login',
     data: {
@@ -39,10 +38,10 @@ createRequest({
     },
     method: 'POST',
     callback: (e,r) => {
-        connsole.log("r=",r)
+        console.log("r=",r)
     }
 })
-*/
+
 
 /*const xhr2 = new XMLHttpRequest;
 xhr2.responseType = 'json';

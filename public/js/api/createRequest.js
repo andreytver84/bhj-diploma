@@ -12,6 +12,7 @@ const createRequest = (options = {}) => {
             way += `${key}=${options.data[key]}&`; 
         }
         way = way.slice(0, -1);
+        console.log(way);
         xhr.open('GET', way);
         xhr.send();
     } else  {
@@ -20,6 +21,7 @@ const createRequest = (options = {}) => {
 
         xhr.open(options.method, options.url);
         xhr.send(formData);
+        console.log('post');
     }
     xhr.addEventListener('readystatechange', () => {
         if (xhr.readyState === 4 && xhr.status === 200) {                       

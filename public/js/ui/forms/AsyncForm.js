@@ -15,7 +15,7 @@ class AsyncForm {
   constructor(element) {
     if (element) {
       this.element = element;
-      this.registerEvents
+      this.registerEvents()      
     } else {
       throw new Error('не передан element');
     }
@@ -25,7 +25,7 @@ class AsyncForm {
    * Необходимо запретить отправку формы и в момент отправки
    * вызывает метод submit()
    * */
-  registerEvents() {
+  registerEvents() {    
     this.element.addEventListener('submit', (e)=> {
       e.preventDefault();
       this.submit();
@@ -42,7 +42,7 @@ class AsyncForm {
   getData() {
     const formData = new FormData(this.element),
           entries = formData.entries(),
-          obj = Object.fromEntries(entries);
+          obj = Object.fromEntries(entries);          
     return obj;
   }
 
@@ -54,7 +54,7 @@ class AsyncForm {
    * Вызывает метод onSubmit и передаёт туда
    * данные, полученные из метода getData()
    * */
-  submit() {
-    this.onSubmit(this.getData());
+  submit() {    
+    this.onSubmit(this.getData());    
   }
 }

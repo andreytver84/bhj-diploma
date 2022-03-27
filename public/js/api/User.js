@@ -59,9 +59,14 @@ class User {
       url: this.URL + '/login',
       method: 'POST',
       data,
-      callback
+      callback: (err, response) => {
+        if (response && response.user) {          
+          this.setCurrent(response.user);
+        }
+        callback(err, response);
+      }
     });
-    User.setCurrent(data.user);
+    
   }
 
   /**
@@ -75,7 +80,12 @@ class User {
       url: this.URL + '/register',
       method: 'POST',
       data,
-      callback
+      callback: (err, response) => {
+        if (response && response.user) {          
+          this.setCurrent(response.user);
+        }
+        callback(err, response);
+      }
     });
   }
 
@@ -87,8 +97,12 @@ class User {
     createRequest({
       url: this.URL + '/logout',
       method: 'POST',
-      data,
-      callback
+      data: this.current(),
+      callback: (err, response) => {
+        if (response.success) {          
+          this.unsetCurrent();          
+        }       
+      }
     });
   }
 }

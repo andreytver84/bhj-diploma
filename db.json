@@ -5,6 +5,24 @@
       "email": "demo@demo",
       "password": "demo",
       "id": "1"
+    },
+    {
+      "name": "Vlad",
+      "email": "test@test.ru",
+      "password": "abracadabra",
+      "id": "3na9zj65cl19suoeq"
+    },
+    {
+      "name": "Андрей Увиков",
+      "email": "a.uvikov@mail.ru",
+      "password": "123456789",
+      "id": "3na9zjcekl19sxt7p"
+    },
+    {
+      "name": "Андрей Увиков",
+      "email": "a.uvikov2@mail.ru",
+      "password": "123456789",
+      "id": "3na9zje5sl19t0osj"
     }
   ],
   "accounts": [

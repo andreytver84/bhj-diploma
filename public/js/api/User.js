@@ -44,7 +44,12 @@ class User {
       url: this.URL + '/current',
       method: 'GET',
       data: this.current(),
-      callback
+      callback: (err, response) => {
+        if (response && response.user) {          
+          this.setCurrent(response.user);
+        }
+        callback(err, response);
+      }
     });
   }
 

@@ -12,7 +12,11 @@ class TransactionsWidget {
    * необходимо выкинуть ошибку.
    * */
   constructor( element ) {
-
+    if (element) {
+      this.element = element;      
+    } else {
+      throw new Error('не передан element');
+    }
   }
   /**
    * Регистрирует обработчики нажатия на

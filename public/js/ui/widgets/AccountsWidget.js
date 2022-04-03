@@ -32,18 +32,14 @@ class AccountsWidget {
    * */
   registerEvents() {
     const createAccount = document.querySelector('.create-account');
+    const accountsPanel = document.querySelector('.accounts-panel');
+
     createAccount.addEventListener('click', () => App.getModal('createAccount').open());
-    
-    window.addEventListener('load', () => {
-      const accounts = document.querySelectorAll('.account');
-      accounts.forEach(item => {
-        console.log(item); /*Проверка*/
-        item.addEventListener('click', () => {
-          console.log("this");/*Проверка*/
-          /*this.onSelectAccount(item)*/
-        });       
-      });
+    accountsPanel.addEventListener('click', (e) => {      
+      let account = e.target.closest('.account');
+      this.onSelectAccount(account);
     });
+    
 
   }
 
@@ -86,13 +82,13 @@ class AccountsWidget {
    * Вызывает App.showPage( 'transactions', { account_id: id_счёта });
    * */
   onSelectAccount(element) {
-    console.log(element);
+    
     const accounts = document.querySelectorAll('.account');
     accounts.forEach(item => item.classList.remove('active'));
     element.classList.add('active');
     let accountId = element.getAttribute('data-id');
     
-    App.showPage( 'transactions', {" account_id": `${accountId}` });
+    App.showPage( 'transactions', {"account_id": `${accountId}` });
   }
 
   /**

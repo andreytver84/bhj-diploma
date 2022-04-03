@@ -66,7 +66,19 @@ class TransactionsPage {
    * в TransactionsPage.renderTransactions()
    * */
   render(options){
-    console.log(options);
+    if (options) {
+      Account.get(options.account_id, (err, response) => {
+        if (response.success) {          
+          console.log(response);
+          this.renderTitle(response.data.name);  
+          Transaction.list(response.data, (err, response) => {
+            if (response.success) {
+              console.log(response);
+            }
+          });    
+        }       
+      })
+    };
   }
 
   /**
@@ -82,7 +94,7 @@ class TransactionsPage {
    * Устанавливает заголовок в элемент .content-title
    * */
   renderTitle(name){
-
+    document.querySelector('.content-title').textContent = name;
   }
 
   /**

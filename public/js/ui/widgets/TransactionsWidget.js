@@ -13,7 +13,8 @@ class TransactionsWidget {
    * */
   constructor( element ) {
     if (element) {
-      this.element = element;      
+      this.element = element; 
+      this.registerEvents();     
     } else {
       throw new Error('не передан element');
     }
@@ -25,6 +26,7 @@ class TransactionsWidget {
    * экземпляра окна
    * */
   registerEvents() {
-
+    document.querySelector('.create-income-button').addEventListener('click', () => App.getModal('newIncome').open());
+    document.querySelector('.create-expense-button').addEventListener('click', () => App.getModal('newExpense').open());  
   }
 }

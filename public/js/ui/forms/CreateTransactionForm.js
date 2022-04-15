@@ -16,13 +16,17 @@ class CreateTransactionForm extends AsyncForm {
    * Обновляет в форме всплывающего окна выпадающий список
    * */
   renderAccountsList() {
-    const incomeAccountsList = document.querySelector('#income-accounts-list');
-    const expenseAccountsList =document.querySelector('#expense-accounts-list');
+    console.log(this.element)
+    /*const incomeAccountsList =  document.querySelector('#income-accounts-list');
+    const expenseAccountsList = document.querySelector('#expense-accounts-list');*/
+    const accountsList =  this.element.querySelector('.accounts-select');
+    
     Account.list(User.current(), (err, response) => {
       if (response.success) {
         for (let item of response.data) {          
-          incomeAccountsList.insertAdjacentHTML('afterbegin', `<option value="${item.id}">${item.name}</option>`);
-          expenseAccountsList.insertAdjacentHTML('afterbegin', `<option value="${item.id}">${item.name}</option>`);
+         /* incomeAccountsList.insertAdjacentHTML('afterbegin', `<option value="${item.id}">${item.name}</option>`);
+          expenseAccountsList.insertAdjacentHTML('afterbegin', `<option value="${item.id}">${item.name}</option>`);*/
+          accountsList.insertAdjacentHTML('afterbegin', `<option value="${item.id}">${item.name}</option>`);
         }
         
       }

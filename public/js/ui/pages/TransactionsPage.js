@@ -19,16 +19,13 @@ class TransactionsPage {
     }
   }
 
+  lastOptions = '';
   /**
    * Вызывает метод render для отрисовки страницы
    * */
-  update(options) {
-    if (options) {
-      console.log('Здесь2 ');
-      console.log(options);
-      this.render(options);
-      console.log('Здесь22 ');
-      console.log(options);
+  update() {
+    if (this.lastOptions) {           
+      this.render(this.lastOptions);      
     }
   }
 
@@ -86,8 +83,8 @@ class TransactionsPage {
    * */
   removeTransaction(id) {
     if (confirm("Вы хотите удалить транзакцию?")) {
-      Transaction.remove({ "id": id }, (err, response) => { });
-      this.update({ "account_id": id });
+      Transaction.remove({ "id": id }, (err, response) => { });           
+      this.update();
     }
   }
 
@@ -98,9 +95,8 @@ class TransactionsPage {
    * в TransactionsPage.renderTransactions()
    * */
   render(options) {
-    if (options) {
-      console.log('Здесь1 ');
-      console.log(options)
+    if (options) {      
+      this.lastOptions = options;
       Account.get(options.account_id, (err, response) => {
         if (response.success) {
           this.clear();

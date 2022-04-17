@@ -85,6 +85,8 @@ class TransactionsPage {
     if (confirm("Вы хотите удалить транзакцию?")) {
       Transaction.remove({ "id": id }, (err, response) => { });           
       this.update();
+      App.updateWidgets();
+      App.updateForms();
     }
   }
 
